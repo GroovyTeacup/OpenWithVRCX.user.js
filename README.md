@@ -3,18 +3,21 @@
 This is just a userscript that adds some scuffed buttons that interact with VRCX to websites.
 
 ## Installation
-- Do a thing
+- Install a userscript manager like [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/)
+- Install the script from the [latest release](https://github.com/GroovyTeacup/OpenWithVRCX.user.js/releases/latest/download/openWithVRCX.user.js)
 
-### Supported Websites
-- [VRChat](https://vrchat.com/)
-- [VRCList](https://vrclist.com/)
-
-### Current Features
+## Current Features
 - VRChat: Adds world/user/instance buttons to VRChat website pages that open the respective dialogs in VRCX
 - VRCList: Adds VRCX buttons to VRCList world cards that open the world in VRCX; If you shift click the button it will add the world to your local favorites.
 - VRCList: Also a "Open with VRCX" button on individual world pages
 
-### Build Instructions
+---
+
+#### Supported Websites
+- [VRChat](https://vrchat.com/)
+- [VRCList](https://vrclist.com/)
+
+#### Build Instructions
 - `npm install`
 - `npm run build` / `npm run dev`
 - Output is in `dist/`
