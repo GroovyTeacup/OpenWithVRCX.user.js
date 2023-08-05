@@ -49,7 +49,7 @@ export class FavoriteManager {
         for (let i = 0; i < list.length; i++) {
             let name = list[i].trim();
 
-            this.vrcx.sendVRCXRequest("local-world-favorite", `${worldId}:${name}`);
+            this.vrcx.sendVRCXRequest("local-favorite-world", `${worldId}:${name}`);
         }
     }
 }
