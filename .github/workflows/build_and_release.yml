@@ -60,6 +60,7 @@ jobs:
       with:
         name: dist
 
+    - uses: actions/checkout@v3
     - name: Generate Changelog
       id: changelog
       uses: TriPSs/conventional-changelog-action@v3
