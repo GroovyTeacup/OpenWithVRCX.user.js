@@ -62,7 +62,6 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: dist
-        path: dist
 
     - uses: actions/checkout@v3
     - name: Generate Changelog
@@ -82,4 +81,4 @@ jobs:
         body: ${{ steps.changelog.outputs.clean_changelog }}
         tag_name: "${{ needs.set_version.outputs.version }}"
         release_name: "OpenWithVRCX ${{ needs.set_version.outputs.version }}"
-        asset_files: './dist/openWithVRCX.user.js'
+        asset_files: './openWithVRCX.user.js'
