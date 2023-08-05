@@ -1,6 +1,6 @@
 {
   "name": "openWithVRCX-UserJS",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Adds buttons to VRChat/VRCList pages that interact with VRCX",
   "main": "index.js",
   "scripts": {
