@@ -71,6 +71,9 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         output-file: "false"
 
+    - name: List working directory
+      run: ls -a
+
 
     - name: Create Release With Asset
       id: Release-AIO
