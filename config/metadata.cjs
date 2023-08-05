@@ -15,8 +15,7 @@ module.exports = {
         "https://vrclist.com/*",
     ],
     require: [
-        "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
     ],
     'run-at': 'document-start'
 }
