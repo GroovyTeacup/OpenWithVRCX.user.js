@@ -3,7 +3,7 @@
 This is just a userscript that adds some scuffed buttons that interact with VRCX to websites.
 
 ## Installation
-- Install a userscript manager like [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/)
+- Install a userscript manager like [Violentmonkey](https://violentmonkey.github.io/). (Other userscript managers may work, but are untested)
 - Install the script from the [latest release](https://github.com/GroovyTeacup/OpenWithVRCX.user.js/releases/latest/download/openWithVRCX.user.js)
 
 ## Current Features
