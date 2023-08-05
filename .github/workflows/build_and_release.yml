@@ -21,6 +21,8 @@ jobs:
 
           echo Output Filename: $FILENAME
           echo "name=${FILENAME}" >> "$GITHUB_OUTPUT"
+          echo $GITHUB_OUTPUT
+          echo ${steps.version.outputs.version}
 
   build:
     runs-on: ubuntu-latest
