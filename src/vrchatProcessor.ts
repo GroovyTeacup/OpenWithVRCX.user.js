@@ -12,11 +12,11 @@ export class VRChatProcessor implements IProcessor {
     public processUrl(url: URL) : void {
         let id = url.pathname.split('/').pop();
         if (url.pathname.startsWith('/home/world/')) {
-            waitForKeyElements('a:contains("Public Link")', this.addWorldBtn, true);
+            waitForKeyElements('a:contains("Public Link")', () => this.addWorldBtn(), true);
         } else if (url.pathname.startsWith('/home/launch')) {
-            waitForKeyElements('a:contains("Launch World")', this.addInstanceBtn, true);
+            waitForKeyElements('a:contains("Launch World")', () => this.addInstanceBtn(), true);
         } else if (url.pathname.startsWith('/home/user/')) {
-            waitForKeyElements('.user-info', this.addUserBtn, true);
+            waitForKeyElements('.user-info', () => this.addUserBtn(), true);
         } else {
             console.log('No button to add on this page');
         }
