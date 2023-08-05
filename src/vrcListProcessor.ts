@@ -10,7 +10,7 @@ export class VRCListProcessor implements IProcessor {
     interval: NodeJS.Timeout | undefined;
     constructor(private vrcx: VRCXHandler) {
         this.worldCards = new Array();
-        this.favoriteManager = new FavoriteManager(vrcx, "TODO");
+        this.favoriteManager = this.vrcx.favoriteManager;
      }
 
     public load() {

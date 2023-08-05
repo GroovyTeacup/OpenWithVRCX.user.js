@@ -1,3 +1,4 @@
+import { FavoriteManager } from './favoriteManager';
 import { IProcessor } from './urlProcessor';
 import { VRChatProcessor } from './vrchatProcessor';
 import { VRCListProcessor } from './vrcListProcessor';
@@ -5,10 +6,12 @@ import { VRCListProcessor } from './vrcListProcessor';
 export class VRCXHandler {
     url: URL;
     currentProcessor: IProcessor;
+    favoriteManager: FavoriteManager;
     autoOpen = false;
 
     constructor() {
         this.url = new URL(window.location.href);
+        this.favoriteManager = new FavoriteManager(this, "TODO");
         this.init();
     }
 
