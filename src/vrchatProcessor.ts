@@ -122,8 +122,22 @@ export class VRChatProcessor implements IProcessor {
         newLink.text('Open with VRCX');
         // make button open link without opening a whole new tab (i thought this one already didn't do that..)
         newLink.attr('target', '_self');
+
+        let favoriteLink = link.clone();
+        favoriteLink.attr('href', '#');
+        favoriteLink.text('Local Favorite');
+        favoriteLink.attr('target', '_self');
+        favoriteLink.on('click', () => {
+            if (worldId == null)
+                return console.error('World ID is null');
+
+            this.vrcx.favoriteManager.promptFavoriteList(true);
+            this.vrcx.favoriteManager.addLocalFavorite(worldId);
+        })
+
     
         // Add the new link after the old one
+        link.after(favoriteLink);
         link.after(newLink);
     }
 }
