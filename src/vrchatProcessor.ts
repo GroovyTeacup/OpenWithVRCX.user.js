@@ -14,7 +14,7 @@ export class VRChatProcessor implements IProcessor {
         if (url.pathname.startsWith('/home/world/')) {
             waitForKeyElements('a:contains("Public Link")', () => this.addWorldBtn(), true);
         } else if (url.pathname.startsWith('/home/launch')) {
-            waitForKeyElements('a:contains("LAUNCH WORLD")', () => this.addInstanceBtn(), true);
+            waitForKeyElements('button:contains("INVITE ME")', () => this.addInstanceBtn(), true);
         } else if (url.pathname.startsWith('/home/user/')) {
             waitForKeyElements('.user-info', () => this.addUserBtn(), true);
         } else {
@@ -90,8 +90,6 @@ export class VRChatProcessor implements IProcessor {
         newButton.on('click', function () {
             if (worldId == null) 
                 return console.error('World ID is null');
-            if (instanceId == null)
-                return console.error('Instance ID is null');
 
             vrcx.openInstanceDialog(worldId, instanceId, shortName)
         })

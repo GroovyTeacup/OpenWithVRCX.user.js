@@ -97,12 +97,14 @@ export class VRCXHandler {
      * @param {string} instanceID - The ID of the instance.
      * @param {string} [shortName] - The short name of the world (optional).
      */
-    public openInstanceDialog(worldId: string, instanceID: string, shortName?: string | null) {
+    public openInstanceDialog(worldId: string, instanceID?: string | null, shortName?: string | null) {
         if (shortName != null) {
             this.sendVRCXRequest("world", shortName);
             return;
-        } else {
+        } else if (instanceID != null) {
             this.sendVRCXRequest("world", `${worldId}:${instanceID}`);
+        } else {
+            this.sendVRCXRequest("world", worldId);
         }
     }
 
