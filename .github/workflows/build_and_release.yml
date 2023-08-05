@@ -58,11 +58,6 @@ jobs:
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
 
     steps:
-    - name: Download Artifacts
-      uses: actions/download-artifact@v3
-      with:
-        name: dist
-
     - uses: actions/checkout@v3
     - name: Generate Changelog
       id: changelog
@@ -71,9 +66,13 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         output-file: "false"
 
+    - name: Download Artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: dist
+
     - name: List working directory
       run: ls -a
-
 
     - name: Create Release With Asset
       id: Release-AIO
