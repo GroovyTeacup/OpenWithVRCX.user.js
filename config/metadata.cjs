@@ -17,7 +17,6 @@ module.exports = {
     require: [
         "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js",
-        'https://gist.github.com/raw/2625891/waitForKeyElements.js'
     ],
     'run-at': 'document-start'
 }
