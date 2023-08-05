@@ -8,6 +8,7 @@ This is just a userscript that adds some scuffed buttons that interact with VRCX
 
 ## Current Features
 - VRChat: Adds world/user/instance buttons to VRChat website pages that open the respective dialogs in VRCX
+- VRChat: A "Local Favorite" button on world pages that... adds the world to your local favorites
 - VRCList: Adds VRCX buttons to VRCList world cards that open the world in VRCX; If you shift click the button it will add the world to your local favorites.
 - VRCList: Also a "Open with VRCX" button on individual world pages
 
