@@ -7,7 +7,7 @@ const webpackConfig = require('./webpack.config.base.cjs')
 const cfg = merge(webpackConfig, {
     mode: 'production',
     output: {
-        filename: 'index.prod.user.js',
+        filename: 'openWithVRCX.user.js',
     },
     plugins: [
         new UserScriptMetaDataPlugin({
