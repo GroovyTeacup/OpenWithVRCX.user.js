@@ -1,5 +1,6 @@
 import { IProcessor } from './urlProcessor';
 import { VRCXHandler } from './vrcxHandler';
+import { waitForKeyElements } from './waitForKeyElements';
 
 export class VRChatProcessor implements IProcessor {
     constructor(private vrcx: VRCXHandler) {}
@@ -11,11 +12,11 @@ export class VRChatProcessor implements IProcessor {
     public processUrl(url: URL) : void {
         let id = url.pathname.split('/').pop();
         if (url.pathname.startsWith('/home/world/')) {
-            this.addWorldBtn();
+            waitForKeyElements('a:contains("Public Link")', this.addWorldBtn, true);
         } else if (url.pathname.startsWith('/home/launch')) {
-            this.addInstanceBtn();
+            waitForKeyElements('a:contains("Launch World")', this.addInstanceBtn, true);
         } else if (url.pathname.startsWith('/home/user/')) {
-            this.addUserBtn();
+            waitForKeyElements('.user-info', this.addUserBtn, true);
         } else {
             console.log('No button to add on this page');
         }
