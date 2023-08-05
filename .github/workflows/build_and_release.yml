@@ -18,7 +18,7 @@ jobs:
         run: |
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           export FILENAME="$(date '+%Y-%m-%dT%H.%M')-${git_hash}"
-          echo "::set-output name=version::${FILENAME}"
+          echo "name=${FILENAME}" >> "$GITHUB_OUTPUT"
 
   build:
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
         path: dist
 
   release:
-    needs: build
+    needs: [build, set_version]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
 
