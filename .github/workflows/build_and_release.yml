@@ -1,0 +1,79 @@
+name: Build & Release OpenWithVRCX.user.js
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  set_version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - id: version
+        run: |
+          git_hash=$(git rev-parse --short "$GITHUB_SHA")
+          export FILENAME="$(date '+%Y-%m-%dT%H.%M')-${git_hash}"
+          echo "::set-output name=version::${FILENAME}"
+
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Restore dependencies
+      run: npm ci
+
+    - name: Build
+      run: |
+        npm ci
+        npm run build
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        path: dist
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+
+    steps:
+    - name: Download Artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: dist
+
+    - name: Generate Changelog
+      id: changelog
+      uses: TriPSs/conventional-changelog-action@v3
+      with:
+        github-token: ${{ secrets.github_token }}
+        output-file: "false"
+
+    - name: Create Release With Asset
+      id: Release-AIO
+      uses: Hs1r1us/Release-AIO@v2.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        body: ${{ steps.changelog.outputs.clean_changelog }}
+        tag_name: "${{ needs.set_version.outputs.version }}"
+        release_name: "OpenWithVRCX ${{ needs.set_version.outputs.version }}"
+        asset_files: './dist/openWithVRCX.user.js'
