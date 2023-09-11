@@ -6,7 +6,8 @@
   "scripts": {
     "postversion": "git push --follow-tags",
     "analyse": "npm_config_report=true npm run build",
-    "build": "bun build build.ts"
+    "prod": "bun run build.ts",
+    "watch": "bun run build.ts --watch"
   },
   "author": "Teacup",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "@types/tampermonkey": "^4.0.5",
     "babel-loader": "^8.2.4",
     "bun-types": "^1.0.1",
+    "chokidar": "^3.5.3",
     "jquery": "^3.7.1",
     "ts-loader": "^9.2.6",
     "typescript": "^5.2.2",
