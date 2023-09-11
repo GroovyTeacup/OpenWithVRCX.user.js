@@ -5,7 +5,7 @@ import { VRCListProcessor } from './vrcListProcessor';
 
 export class VRCXHandler {
     url: URL;
-    currentProcessor: IProcessor;
+    currentProcessor: IProcessor | undefined;
     favoriteManager: FavoriteManager;
     autoOpen = false;
 
