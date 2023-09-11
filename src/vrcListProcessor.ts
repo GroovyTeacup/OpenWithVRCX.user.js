@@ -7,7 +7,7 @@ import { waitForKeyElements } from "./waitForKeyElements";
 export class VRCListProcessor implements IProcessor {
     worldCards: Array<JQuery<HTMLElement>>;
     favoriteManager: FavoriteManager;
-    interval: NodeJS.Timeout | undefined;
+    interval: Timer | undefined;
     constructor(private vrcx: VRCXHandler) {
         this.worldCards = new Array();
         this.favoriteManager = this.vrcx.favoriteManager;
@@ -48,14 +48,15 @@ export class VRCListProcessor implements IProcessor {
     public addWorldBtn_VrcList() {
         let page = $("world-page")[0];
         let shadow = page.shadowRoot
-        let link = $("a#world-link", shadow);
+        let link = $("a#world-link", shadow as any);
         let newLink = link.clone();
 
         console.log("Adding button to vrclist page", shadow, link, newLink)
 
         // Get the world ID from the existing link href
         console.log("Current href", link.attr("href"))
-        let worldId = link.attr("href").split('/').pop()
+        let worldId = link.attr("href") ?? ""
+        worldId = worldId.split('/').pop() ?? ""
         newLink.attr('href', this.vrcx.constructWorldDialogURL(worldId));
         newLink.attr('id', 'vrcx-world-link')
         newLink.attr('target', '_self');
@@ -91,7 +92,7 @@ export class VRCListProcessor implements IProcessor {
         
         let favManager = this.favoriteManager;
 
-        let visitedButton = $("button#visited-circle", card[0].shadowRoot)
+        let visitedButton = $("button#visited-circle", card[0].shadowRoot as any)
         let newButton = visitedButton.clone();
         newButton.attr("id", "vrcx-circle");
         newButton.attr("title", `Open with VRCX (Shift-Click to local favorite to '${favManager.getFavoriteList()}' list)`);
